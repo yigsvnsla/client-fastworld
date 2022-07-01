@@ -4,6 +4,16 @@
 /** Ionic CSS Variables **/
 :root {
 
+  /** cupertino dark **/
+
+  --cupertino-pane-icon-close-color: #a8a7ae;
+  --cupertino-pane-background: #1c1c1d;
+  --cupertino-pane-color: #ffffff;
+  --cupertino-pane-shadow: 0 4px 16px rgb(0 0 0 / 12%);
+  --cupertino-pane-border-radius: 20px;
+  --cupertino-pane-move-background: #424246;
+  --cupertino-pane-destroy-button-background: #424246;
+
   /** variable customs **/
   --custom-color-warn: rgb(205, 150, 10);
   --custom-color-danger: rgb(190, 45, 45);

@@ -1,3 +1,56 @@
-<p>
-  register works!
-</p>
+<ion-card class="ion-text-center">
+  <ion-card-header class="ion-text-start">
+    <ion-card-title><h1>Registro</h1></ion-card-title>
+  </ion-card-header>
+  <ion-card-content style="padding-bottom: 0;">
+    <ion-item-group>
+      <ion-item>
+        <ion-icon slot="start" name="id-card"></ion-icon>
+        <ion-input type="text" placeholder="Nº de Cedula"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="person"></ion-icon>
+        <ion-input type="text" placeholder="Nombre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="person"></ion-icon>
+        <ion-input type="text" placeholder="Apellido"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="call"></ion-icon>
+        <ion-input type="text" placeholder="Telefono"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="mail"></ion-icon>
+        <ion-input type="text" placeholder="Correo Electronico"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="key"></ion-icon>
+        <ion-input type="text" placeholder="Contraseña"></ion-input>
+      </ion-item>
+      <ion-button class="ion-margin" color="orange" (click)="onRegister()" expand="block" fill="solid" shape="round">
+        <ion-label>Enviar</ion-label>
+        <ion-icon slot="end" name="send"></ion-icon>
+      </ion-button>
+    </ion-item-group>
+  </ion-card-content>
+  <ion-card-header style="padding-top: 0;">
+    <p class="divider line one-line" id="link-register" >Registrate con</p>
+    <ion-grid fixed>
+      <ion-row class="ion-justify-content-between">
+        <ion-col style="display: flex;" class="ion-justify-content-center" size="6">
+          <ion-fab-button color="orange">
+            <ion-icon name="logo-google"></ion-icon>
+          </ion-fab-button>
+        </ion-col>
+        <ion-col style="display: flex;" class="ion-justify-content-center"  size="6" >
+          <ion-fab-button color="orange">
+            <ion-icon name="logo-facebook"></ion-icon>
+          </ion-fab-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  
+    <ion-text >¿Ya tienes una cuenta?<br> <a>Ingresa aqui 🌐</a></ion-text>
+  </ion-card-header>
+</ion-card>

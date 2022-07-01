@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CupertinoSettings } from 'cupertino-pane';
+import { CupertinoPane } from 'cupertino-pane';
 
 @Component({
   selector: 'app-auth',
@@ -6,17 +8,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./auth.page.scss'],
 })
 export class AuthPage implements OnInit {
+  pane:CupertinoPane
 
+  private loginPane : CupertinoPane
+  private registerPane : CupertinoPane
   constructor() { }
 
   ngOnInit() {
+
+    this.loginPane = new CupertinoPane('app-login', {
+      parentElement:'ion-content',
+      fitHeight: true,
+      backdrop: true,
+      fastSwipeClose:true,
+
+    })
+
+    this.registerPane = new CupertinoPane('app-register', {
+      parentElement:'ion-content',
+      fitHeight: true,
+      backdrop: true,
+      fastSwipeClose:true,
+
+    })    
   }
 
-  onLogin(){
-
+  public async onShowLogin(){
+    await this.loginPane.present({animate: true})
   }
 
-  onRegister(){
-
+  public async onShowRegister(){
+    await this.registerPane.present({animate: true})
   }
 }
