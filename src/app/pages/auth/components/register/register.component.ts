@@ -1,3 +1,4 @@
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,12 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  public formRegister:FormGroup
+  public loading: boolean
+  constructor(
+    private formBuilder: FormBuilder
+  ) { }
 
-  ngOnInit() {}
+  public ngOnInit() {
+    this.loading = false
+    this.formRegister = this.formBuilder.nonNullable.group({
+      dni:['',[Validators.required,Validators.nullValidator]],
+      name:['',[Validators.required,Validators.nullValidator]],
+      lastname:['',[Validators.required,Validators.nullValidator]],
+      phone:['',[Validators.required,Validators.nullValidator]],
+      mail:['',[Validators.required,Validators.nullValidator]],
+      password:['',[Validators.required,Validators.nullValidator]],
+    })
+  }
 
   public onRegister(){
-
+    this.loading = true
+    setTimeout(() => {
+      console.log(this.formRegister.value);
+      this.loading = false
+    }, 1000);
   }
 
 }

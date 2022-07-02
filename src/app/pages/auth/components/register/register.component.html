@@ -3,34 +3,39 @@
     <ion-card-title><h1>Registro</h1></ion-card-title>
   </ion-card-header>
   <ion-card-content style="padding-bottom: 0;">
-    <ion-item-group>
+    <ion-item-group [formGroup]="this.formRegister">
       <ion-item>
         <ion-icon slot="start" name="id-card"></ion-icon>
-        <ion-input type="text" placeholder="Nº de Cedula"></ion-input>
+        <ion-input formControlName="dni" type="text" placeholder="Nº de Cedula"></ion-input>
       </ion-item>
       <ion-item>
         <ion-icon slot="start" name="person"></ion-icon>
-        <ion-input type="text" placeholder="Nombre"></ion-input>
+        <ion-input formControlName="name" type="text" placeholder="Nombre"></ion-input>
       </ion-item>
       <ion-item>
         <ion-icon slot="start" name="person"></ion-icon>
-        <ion-input type="text" placeholder="Apellido"></ion-input>
+        <ion-input formControlName="lastname" type="text" placeholder="Apellido"></ion-input>
       </ion-item>
       <ion-item>
         <ion-icon slot="start" name="call"></ion-icon>
-        <ion-input type="text" placeholder="Telefono"></ion-input>
+        <ion-input formControlName="phone" type="text" placeholder="Telefono"></ion-input>
       </ion-item>
       <ion-item>
         <ion-icon slot="start" name="mail"></ion-icon>
-        <ion-input type="text" placeholder="Correo Electronico"></ion-input>
+        <ion-input formControlName="mail" type="text" placeholder="Correo Electronico"></ion-input>
       </ion-item>
       <ion-item>
         <ion-icon slot="start" name="key"></ion-icon>
-        <ion-input type="text" placeholder="Contraseña"></ion-input>
+        <ion-input formControlName="password" type="text" placeholder="Contraseña"></ion-input>
       </ion-item>
-      <ion-button class="ion-margin" color="orange" (click)="onRegister()" expand="block" fill="solid" shape="round">
-        <ion-label>Enviar</ion-label>
-        <ion-icon slot="end" name="send"></ion-icon>
+      <ion-button class="ion-text-center ion-margin" type="submit" [disabled]="this.formRegister.invalid" color="orange" (click)="onRegister()" expand="block" fill="solid" shape="round">
+        <ng-container *ngIf="!this.loading; else _loading">
+          <ion-label>Enviar</ion-label>
+          <ion-icon slot="end" name="send"></ion-icon>
+        </ng-container>
+        <ng-template #_loading>
+          <ion-spinner slot="end" name="crescent"></ion-spinner>
+        </ng-template>
       </ion-button>
     </ion-item-group>
   </ion-card-content>
@@ -50,7 +55,6 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-  
     <ion-text >¿Ya tienes una cuenta?<br> <a>Ingresa aqui 🌐</a></ion-text>
   </ion-card-header>
 </ion-card>
