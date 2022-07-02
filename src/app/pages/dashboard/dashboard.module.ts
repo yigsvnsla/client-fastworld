@@ -1,3 +1,4 @@
+import { ActivasEncomiendasComponent } from './components/activas-encomiendas/activas-encomiendas.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -10,6 +11,8 @@ import { DashboardPage } from './dashboard.page';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { GenericComponentsModule } from '../generic-components/generic-components.module';
+import { HistorialEncomiendaComponent } from './components/historial-encomienda/historial-encomienda.component';
+import { CrearEncomiendaComponent } from './components/crear-encomienda/crear-encomienda.component';
 
 @NgModule({
   imports: [
@@ -21,6 +24,12 @@ import { GenericComponentsModule } from '../generic-components/generic-component
     HttpClientModule,
     GenericComponentsModule
   ],
-  declarations: [DashboardPage,HomeComponent]
+  declarations: [
+    DashboardPage,
+    HomeComponent,
+    HistorialEncomiendaComponent,
+    CrearEncomiendaComponent,
+    ActivasEncomiendasComponent
+  ]
 })
 export class DashboardPageModule {}
