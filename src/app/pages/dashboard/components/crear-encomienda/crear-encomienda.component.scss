@@ -1,0 +1,39 @@
+@media only screen and (min-width:540px) {
+    ion-img{
+        width: 60vw;
+        height: 60vh;
+    }
+}
+
+@media only screen and (min-width:960px) {
+    ion-img{
+        width: 45vw;
+        height: 45vh
+    }
+}
+
+
+.emptyList{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+
+ion-segment {
+    ion-segment-button {
+        --color-checked: var(--ion-color-orange);
+        --color-focused: var(--ion-color-orange);
+        --color-hover: var(--ion-color-orange);
+        --indicator-color: var(--ion-color-orange);
+    }
+}
+
+
+
+
+.curved{
+    border-radius: 8px;
+}

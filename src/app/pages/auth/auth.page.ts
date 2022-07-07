@@ -8,7 +8,6 @@ import { CupertinoPane } from 'cupertino-pane';
   styleUrls: ['./auth.page.scss'],
 })
 export class AuthPage implements OnInit {
-  pane:CupertinoPane
 
   private loginPane : CupertinoPane
   private registerPane : CupertinoPane

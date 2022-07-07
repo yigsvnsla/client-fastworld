@@ -5,6 +5,87 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content id="crear">
 
+  <div id="category-list">
+    <ion-list>
+      <ion-item (click)="this.setCategory(item)" button *ngFor="let item of categoryList" >
+        <ion-label>{{ item }}</ion-label>
+        <ion-icon slot="start" name="add"></ion-icon>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div id="add">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Ingresa la informacion del producto <br> para agregarlo a la lista</ion-card-subtitle>
+        <ion-card-title><ion-text color="orange">¿Que vas a Enviar?</ion-text></ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item-group>
+          <ion-item lines="full" (click)="this.onShowCategoryPane()" class="curved" button>
+            <ion-label>
+              <p><ion-text color="orange">Categoria</ion-text></p>
+              <h2>Seleccionar</h2>
+            </ion-label>
+            <ion-icon slot="start" name="grid"></ion-icon>
+          </ion-item>
+          <ion-card-header>
+            <ion-card-title><ion-text color="orange">Metodo de pago</ion-text></ion-card-title>
+            <ion-card-subtitle>Seleccionar</ion-card-subtitle>
+          </ion-card-header>
+          <ion-segment>
+            <ion-segment-button >
+              <ion-icon name="card"></ion-icon>
+              <ion-label>Transferencia</ion-label>
+            </ion-segment-button>
+            <ion-segment-button >
+              <ion-icon name="people"></ion-icon>
+              <ion-label>Contra-Entrega</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+          <ion-card-header>
+            <ion-card-title><ion-text color="orange">Tiempo de Espera de Retiro</ion-text></ion-card-title>
+            <ion-card-subtitle>Seleccionar</ion-card-subtitle>
+          </ion-card-header>
+          <ion-segment>
+            <ion-segment-button >
+              <ion-icon name="checkmark"></ion-icon>
+              <ion-label>Del Dia</ion-label>
+            </ion-segment-button>
+            <ion-segment-button >
+              <ion-icon name="calendar"></ion-icon>
+              <ion-label>Programada</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-item-group>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+
+  <ion-fab  *ngIf="productList.length > 0" vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button><ion-icon name="code"></ion-icon></ion-fab-button>
+    <ion-fab-list side="start">
+      <ion-fab-button><ion-icon name="logo-ionic"></ion-icon></ion-fab-button>
+      <ion-fab-button><ion-icon name="logo-angular"></ion-icon></ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+  <section *ngIf="productList.length <= 0" class="emptyList ion-padding">
+    <ion-img [src]="'../../../../../assets/svg/undraw_empty_re_opql.svg'"></ion-img>
+    <ion-card-header class="ion-text-center">
+      <ion-card-title>No tienes encomiendas para enviar</ion-card-title>
+      <ion-card-subtitle>pulsa el siguiente boton para iniciar los envios</ion-card-subtitle>
+    </ion-card-header>
+    <ion-chip button (click)="this.addProduct()" color="orange" mode="ios" outline="true">
+      <ion-label>Crear Encomiendas</ion-label>
+      <ion-icon name="add"></ion-icon>
+    </ion-chip>
+  </section>
 </ion-content>
+
+
+
+
