@@ -27,6 +27,7 @@
     "@ionic/angular": "^6.1.12",
     "@ionic/angular-server": "^6.1.12",
     "cupertino-pane": "^1.2.92",
+    "date-fns": "^2.28.0",
     "ngx-cookie-service": "^14.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",

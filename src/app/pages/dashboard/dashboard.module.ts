@@ -13,7 +13,6 @@ import { HomeComponent } from './components/home/home.component';
 import { GenericComponentsModule } from '../generic-components/generic-components.module';
 import { HistorialEncomiendaComponent } from './components/historial-encomienda/historial-encomienda.component';
 import { CrearEncomiendaComponent } from './components/crear-encomienda/crear-encomienda.component';
-
 @NgModule({
   imports: [
     CommonModule,
@@ -22,7 +21,7 @@ import { CrearEncomiendaComponent } from './components/crear-encomienda/crear-en
     IonicModule,
     DashboardPageRoutingModule,
     HttpClientModule,
-    GenericComponentsModule
+    GenericComponentsModule,
   ],
   declarations: [
     DashboardPage,
@@ -30,6 +29,7 @@ import { CrearEncomiendaComponent } from './components/crear-encomienda/crear-en
     HistorialEncomiendaComponent,
     CrearEncomiendaComponent,
     ActivasEncomiendasComponent
+
   ]
 })
 export class DashboardPageModule {}

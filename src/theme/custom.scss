@@ -115,6 +115,7 @@ ion-modal{
         background: var(--ion-background-color);
     }
 }
+
 // custom IonChips
 ion-chip{
     &.danger {
@@ -164,6 +165,22 @@ ion-chip{
     }
 }
 
+ion-button{
+    &.eye-button{
+        --background: transparent !important;
+        &::part(native){
+            border-radius: 50%;
+        }
+    }
+}
+
+
+ion-item{
+    display: flex;
+    align-items:center;
+}
+
+
 ion-input{
     // hide spin-btn
     &.input-number{
@@ -178,15 +195,60 @@ ion-input{
 
     // custom autocomplete background
     &.input-autocomplete{
+        input:-webkit-autofill,
         input:-webkit-autofill:hover, 
-        input:-webkit-autofill:focus, 
-        input:-webkit-autofill:active{
-            box-shadow: 0 0 0 30px var(--ion-item-background, var(--ion-background-color, #fff)) inset !important;
-        }
-        input:-webkit-autofill{
-            box-shadow: 0 0 0 30px var(--ion-item-background, var(--ion-background-color, #fff)) inset !important;
-            -webkit-text-fill-color: var(--ion-item-color, var(--ion-text-color, #000)) !important;
+        input:-webkit-autofill:focus,
+        textarea:-webkit-autofill,
+        textarea:-webkit-autofill:hover,
+        textarea:-webkit-autofill:focus,
+        select:-webkit-autofill,
+        select:-webkit-autofill:hover,
+        select:-webkit-autofill:focus {
+            margin-top: 6px;
+            padding: 0;
+            padding-bottom: 8px;
+            -webkit-text-fill-color: var(--ion-text-color);
+            -webkit-box-shadow: 0 0 0px 1000px var(--ion-item-background) inset !important;
+            transition: background-color 5000s ease-in-out 0s;
         }
     }
 }
 
+ion-segment {
+    // Buttons
+    ion-segment-button{
+        &.orange{
+            --color-checked: var(--ion-color-orange);
+            --color-focused: var(--ion-color-orange);
+            --color-hover: var(--ion-color-orange);
+            --indicator-color: var(--ion-color-orange);
+        }
+    } 
+}
+
+
+// CupertinoPane custom
+
+div{
+    &.method-pay-pane{
+        z-index: 11;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 14px;
+}
+::-webkit-scrollbar-track {
+    background: #404040;
+    border-radius: 36px;
+    margin: 50px;
+}
+::-webkit-scrollbar-thumb {
+    background: #666666;
+    border-radius: 36px;
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+}
+.inner-scroll {
+    scrollbar-width: thin
+}

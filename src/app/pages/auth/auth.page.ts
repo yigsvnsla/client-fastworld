@@ -11,6 +11,7 @@ export class AuthPage implements OnInit {
 
   private loginPane : CupertinoPane
   private registerPane : CupertinoPane
+
   constructor() { }
 
   ngOnInit() {
@@ -22,7 +23,7 @@ export class AuthPage implements OnInit {
       fastSwipeClose:true,
 
     })
-
+    
     this.registerPane = new CupertinoPane('app-register', {
       parentElement:'ion-content',
       fitHeight: true,
@@ -32,10 +33,12 @@ export class AuthPage implements OnInit {
     })    
   }
 
+  // Mostrar Panel de Ingreso
   public async onShowLogin(){
     await this.loginPane.present({animate: true})
   }
 
+  //Mostrar Panel de Registro
   public async onShowRegister(){
     await this.registerPane.present({animate: true})
   }

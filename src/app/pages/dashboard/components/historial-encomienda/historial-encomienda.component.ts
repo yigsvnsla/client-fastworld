@@ -7,8 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistorialEncomiendaComponent implements OnInit {
 
-  constructor() { }
+  public productList: any[]
+
+  constructor() { 
+    this.productList = ["","",""]
+  }
 
   ngOnInit() {}
+
+  public onSearchChange($event){
+    console.log($event);
+    
+  }
 
 }
