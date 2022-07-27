@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CupertinoSettings } from 'cupertino-pane';
 import { CupertinoPane } from 'cupertino-pane';
 
 @Component({

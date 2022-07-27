@@ -1,9 +1,13 @@
+import { environment } from './../../../../../environments/environment.prod';
+import { ConectionsService } from 'src/app/services/conections.service';
 import { CupertinoPane } from 'cupertino-pane';
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonItemGroup } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { debounceTime, delay, tap } from 'rxjs/operators';
+import { Route, Router } from '@angular/router';
+import { CookiesService } from 'src/app/services/cookies.service';
 
 @Component({
   selector: 'app-login',
@@ -17,11 +21,16 @@ export class LoginComponent implements OnInit {
   public loading: boolean
 
   constructor(
-    private formBuilder: FormBuilder
-  ) { }
+    private formBuilder: FormBuilder,
+    private conectionsService:ConectionsService,
+    private router:Router,
+    private cookiesService: CookiesService,
+
+  ) { 
+    this.loading = false
+  }
 
   public ngOnInit() {
-    this.loading = false
     this.formLogin = this.formBuilder.nonNullable.group({
       email: ['', [
         Validators.required,
@@ -44,7 +53,7 @@ export class LoginComponent implements OnInit {
   }
 
   public enterOrGo() {
-    try {
+    if ( !this.formLogin['valid'] ) {
       // intentamos buscar los elementos hijos del formRef desde el template
       for (const key in this.formLoginRef["el"].children) {
         // validamos que dicha propiedad exista 
@@ -61,12 +70,7 @@ export class LoginComponent implements OnInit {
                   if ((this.formLoginRef["el"].children[key].children[cKey] as HTMLIonInputElement).value == '') {
                     // hacemos focus a el input que este vacio
                     (this.formLoginRef["el"].children[key].children[cKey] as HTMLIonInputElement).setFocus()
-                    break
-                  }
-                  else {
-                    if (this.formLogin.valid) {
-                      this.onLogin()
-                    }
+                    return
                   }
                 }
               }
@@ -74,30 +78,21 @@ export class LoginComponent implements OnInit {
           }
         }
       }
-    } catch (error) {
-      console.log(error.message);
+    }else{
+      this.onLogin()
     }
   }
 
   onLogin() {
     this.loading = true
-    new Observable(
-      subscriber => {
-        setTimeout(() => {
-          subscriber.next(this.formLogin.value)
-        }, 1000);
-      })
-      .pipe(
-        debounceTime(500),
-        delay(1000),
-      )
-      .subscribe(x => {
+    this.conectionsService.signIn(this.formLogin['value'])
+      .subscribe((response)=>{
+        this.cookiesService.set(environment['cookie_tag'], response['token']);
+        this.router.navigateByUrl('dashboard');
+      },(error)=>{
+        console.error(error);
+      },()=>{
         this.loading = false
-        console.log(x);
-        alert(JSON.stringify(x))
       })
-
-
-
   }
 }

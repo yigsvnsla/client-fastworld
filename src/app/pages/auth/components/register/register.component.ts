@@ -1,4 +1,3 @@
-import { Router } from '@angular/router';
 import { ConectionsService } from 'src/app/services/conections.service';
 import { IonItemGroup } from '@ionic/angular';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -22,7 +21,6 @@ export class RegisterComponent implements OnInit {
     private toolsService:ToolsService,
     private conectionsService:ConectionsService, 
     private formBuilder: FormBuilder,
-    private router:Router
   ) { }
 
   public ngOnInit() {
@@ -55,13 +53,6 @@ export class RegisterComponent implements OnInit {
       ]],
       password:['',[Validators.required,Validators.nullValidator]],
     })
-  }
-
-  postFormat(control: AbstractControl) {
-    if (RegExp(/[0-9]/g).test(control.value) && control.value.length == 10) {
-      control.patchValue(format(control.value, 'EC', 'INTERNATIONAL').replace(/ /g, ''))
-    }
-
   }
 
   public enterOrGo() {

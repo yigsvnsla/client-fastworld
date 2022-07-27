@@ -14,6 +14,7 @@ import {
   catchError, 
   debounceTime 
 } from 'rxjs/operators';
+import { SingInI, SingInResponseI, SingUpI, SingUpResponseI } from '../interfaces/auth.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -106,9 +107,9 @@ export class ConectionsService {
     Authentications methods
   */
 
-  public signUp(formBody:any){
+  public signUp(formBody:SingUpI){
     return this.httpClient
-      .post<any>(`${this.api}/auth/cliente/signup`, formBody)
+      .post<SingUpResponseI>(`${this.api}/auth/cliente/signup`, formBody)
       .pipe(
         debounceTime(500),
         retry(2),
@@ -116,15 +117,14 @@ export class ConectionsService {
       );
   }
 
-  public signIn({ email, password }) {
-    console.log({ identifier: email, password });
+  public signIn(credentials:SingInI) {
     return this.httpClient
-      .post<any>(`${this.api}/auth/cliente/signin`, { identifier: email, password })
+      .post<SingInResponseI>(`${this.api}/auth/cliente/signin`, credentials)
       .pipe(
         debounceTime(500),
         retry(2),
         catchError((err) => this.errorHandler(err))
-      );
+      )
   }
 
   public logOut():void{
