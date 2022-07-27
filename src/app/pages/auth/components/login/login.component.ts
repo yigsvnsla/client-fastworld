@@ -1,4 +1,5 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { CupertinoPane } from 'cupertino-pane';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonItemGroup } from '@ionic/angular';
 import { Observable } from 'rxjs';
@@ -12,7 +13,6 @@ import { debounceTime, delay, tap } from 'rxjs/operators';
 export class LoginComponent implements OnInit {
 
   @ViewChild('formLoginRef') formLoginRef: IonItemGroup
-
   public formLogin: FormGroup
   public loading: boolean
 

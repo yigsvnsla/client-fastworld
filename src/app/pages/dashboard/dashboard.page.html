@@ -7,6 +7,18 @@
     </ion-header>
     <ion-content>
       <ion-item-group class="ion-text-center"> 
+        <ion-item >
+          <ion-avatar slot="start">
+            <img [src]="'https://pps.whatsapp.net/v/t61.24694-24/171481357_128826926464177_4348031661618360306_n.jpg?ccb=11-4&oh=01_AVxWjzfDOZsaR7DCUxldNs8el5CZQeCGixI0CQMR-by6FQ&oe=62EFC893'" />
+          </ion-avatar>
+          <ion-label>
+            <h1>Jesus Guzman</h1>
+            <a  style="color: var(--ion-color-step-400); display: flex; align-items: center;" [routerLink]="[ '/dashboard/profile ' ]" routerDirection="root" routerLinkActive='active-link' [routerLinkActiveOptions]="{exact: true}">
+              <ion-icon name="cog"></ion-icon> 
+              <ion-text style="margin-left: 8px;"> Editar Perfil </ion-text>
+            </a>
+          </ion-label>
+        </ion-item>
         <ion-menu-toggle auto-hide="false">
           <ion-item [detail]="true" [lines]="'full'" [routerLink]="['/dashboard/home']" routerDirection="root" routerLinkActive='active-link' [routerLinkActiveOptions]="{exact: true}">
             <ion-label>Inicio</ion-label>

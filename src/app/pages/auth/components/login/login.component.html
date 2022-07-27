@@ -9,7 +9,7 @@
           <ion-input class="input-autocomplete" (keydown.enter)="this.enterOrGo()" autocomplete="email" formControlName="email" type="email" placeholder="example@gmail.com"></ion-input>
           <ion-icon slot="start" name="people"></ion-icon>
         </ion-item>
-        <ion-item>
+        <ion-item class="item-center-icon">
           <ion-label position="stacked">Contraseña</ion-label>
           <ion-button class="eye-button" slot="end" (click)="eyeIconRef.name == 'eye-off' ? eyeIconRef.name = 'eye':eyeIconRef.name = 'eye-off'">
             <ion-icon #eyeIconRef slot="icon-only" name="eye-off"></ion-icon>

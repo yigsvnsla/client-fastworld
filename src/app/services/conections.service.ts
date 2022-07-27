@@ -20,22 +20,23 @@ import {
 })
 export class ConectionsService {
   // API path
-   api: string  = 'https://api.fastworld.app/api';
+  public readonly api: string  = 'https://api.fastworld.app/api';
 
   constructor(
     private toolsService: ToolsService,
     private cookiesService: CookiesService,
     private httpClient: HttpClient,
     private router:Router
-  ) {
-  }
+    ) {
+      
+    }
 
   // Http Options
   httpHeaders() {
     return {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        // Authorization: `Bearer ${(this.cookiesService.get(environment.cookie_tag).jwt)}`,
+        'Authorization': `Bearer ${(this.cookiesService.get(environment.cookie_tag).jwt)}`,
       }),
     };
   }
@@ -105,10 +106,20 @@ export class ConectionsService {
     Authentications methods
   */
 
-  public auth({ email, password }) {
+  public signUp(formBody:any){
+    return this.httpClient
+      .post<any>(`${this.api}/auth/cliente/signup`, formBody)
+      .pipe(
+        debounceTime(500),
+        retry(2),
+        catchError((err) => this.errorHandler(err))
+      );
+  }
+
+  public signIn({ email, password }) {
     console.log({ identifier: email, password });
     return this.httpClient
-      .post<any>(`${this.api}/auth/local`, { identifier: email, password })
+      .post<any>(`${this.api}/auth/cliente/signin`, { identifier: email, password })
       .pipe(
         debounceTime(500),
         retry(2),

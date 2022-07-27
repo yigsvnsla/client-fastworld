@@ -9,8 +9,8 @@ import { CupertinoPane } from 'cupertino-pane';
 })
 export class AuthPage implements OnInit {
 
-  private loginPane : CupertinoPane
-  private registerPane : CupertinoPane
+  public loginPane : CupertinoPane
+  public registerPane : CupertinoPane
 
   constructor() { }
 
